@@ -10,15 +10,8 @@ import org.springframework.stereotype.Component;
  * @create 2018-09-14 10:56
  **/
 @Component
-public class AbstractCommandReceiver implements CommandReceiver<AbstractCommandRequest> {
+public class AbstractCommandReceiver {
 
-    @Override
-    public Class<AbstractCommandRequest> getRequestType() {
-        return null;
-    }
+    //TODO: 这个receiver实现写错了 暂时标记下
 
-    @Override
-    public boolean isSupportTypes(CommandSupportType supportType) {
-        return true ;
-    }
 }
