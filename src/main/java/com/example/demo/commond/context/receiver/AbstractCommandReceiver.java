@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @create 2018-09-14 10:56
  **/
 @Component
-public abstract class AbstractCommandReceiver implements CommandReceiver<AbstractCommandRequest>{
+public abstract class AbstractCommandReceiver<H extends AbstractCommandRequest> implements CommandReceiver<H>{
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractCommandReceiver.class);
 
     @Override
@@ -43,13 +43,5 @@ public abstract class AbstractCommandReceiver implements CommandReceiver<Abstrac
         return 0;
     }
 
-    @Override
-    public Class<AbstractCommandRequest> getRequestType() {
-        return null;
-    }
 
-    @Override
-    public boolean isSupportTypes(CommandSupportType supportType) {
-        return false;
-    }
 }

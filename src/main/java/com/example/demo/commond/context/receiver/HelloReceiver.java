@@ -10,11 +10,13 @@
  */
 package com.example.demo.commond.context.receiver;
 
+import com.example.demo.commond.context.CommandRequest;
+import com.example.demo.commond.context.CommandRequestSupport;
 import com.example.demo.commond.context.CommandResponse;
 import com.example.demo.commond.context.CommandSupportType;
-import com.example.demo.commond.context.request.AbstractCommandRequest;
 import com.example.demo.commond.context.request.HelloRequest;
-import com.example.demo.commond.context.support.AbstractCommandRequestSupport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,34 +28,27 @@ import org.springframework.stereotype.Component;
  * @since 1.0.0
  */
 @Component
-public class HelloReceiver extends AbstractCommandReceiver implements AbstractCommandRequestSupport<HelloRequest,AbstractCommandReceiver<HelloRequest>> {
+public class HelloReceiver extends AbstractCommandReceiver<HelloRequest> implements CommandRequestSupport {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(HelloReceiver.class);
+
     @Override
-    public void doAfterCompletion(AbstractCommandRequest request, CommandResponse response, Exception exception) {
-        super.doAfterCompletion(request, response, exception);
+    public Class<HelloRequest> getRequestType() {
+        return null;
     }
 
     @Override
-    public void doBeforeCompletion(AbstractCommandRequest request, CommandResponse response) {
-        super.doBeforeCompletion(request, response);
-    }
-
-    @Override
-    public boolean doAfterOpenSession(AbstractCommandRequest request, CommandResponse response) {
-        return super.doAfterOpenSession(request, response);
-    }
-
-    @Override
-    public boolean doBeforeOpenSession(AbstractCommandRequest request, CommandResponse response) {
-        return super.doBeforeOpenSession(request, response);
-    }
-
-    @Override
-    protected void doHandle(HelloRequest request, CommandResponse response) {
-
+    public boolean isSupportTypes(CommandSupportType supportType) {
+        return false;
     }
 
     @Override
     public CommandSupportType supportType() {
         return null;
+    }
+
+    @Override
+    public void handle(CommandRequest request, CommandResponse response) {
+        LOGGER.info("Helloreceiver is handing !!!");
     }
 }
