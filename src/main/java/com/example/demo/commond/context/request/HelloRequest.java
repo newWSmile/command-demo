@@ -26,9 +26,6 @@ import com.example.demo.commond.context.support.SourceEnumType;
 public class HelloRequest  extends AbstractCommandRequest implements CommandRequest {
     private String name ;
 
-    public HelloRequest(String name) {
-        this.name = name;
-    }
 
     public HelloRequest(CommandSupportType requestSupportType, String requestSource, String name) throws CommandException {
         super(requestSupportType, requestSource);

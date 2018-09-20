@@ -7,4 +7,6 @@ public enum SourceEnumType implements CommandSupportType {
     城市服务商,
 
     用户中心;
+
+
 }

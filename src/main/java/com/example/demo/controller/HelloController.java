@@ -12,6 +12,8 @@ package com.example.demo.controller;
 
 import com.example.demo.commond.context.CommandContext;
 import com.example.demo.commond.context.request.HelloRequest;
+import com.example.demo.commond.context.support.SourceEnumType;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,7 +34,7 @@ public class HelloController {
     @RequestMapping("/getName")
     @ResponseBody
     public String getName(){
-        HelloRequest request = new HelloRequest("xiaoming");
+        HelloRequest request = new HelloRequest(SourceEnumType.城市服务商,"City","xiaoming");
         CommandContext.get().execute(request);
         return "my name is :"+request.getName();
     }
